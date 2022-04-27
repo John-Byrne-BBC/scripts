@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [[ -z $1 ]]; then
+    echo "Usage: $0 <SCRIPTS_PATH>"
+    exit 1
+fi
+
+SCRIPTS_PATH=$1
+
+if [[ -f "$HOME/.zshrc" ]]; then
+    RC_FILE="$HOME/.zshrc"
+elif [[ -f "$HOME/.bashrc" ]]; then
+    RC_FILE="$HOME/.bashrc"
+else
+    echo "Error: Cannot find zshrc or bashrc file to export PATH."
+    exit 1;
+fi
+
+echo "export PATH=\"${SCRIPTS_PATH}:\$PATH\"" >> $RC_FILE

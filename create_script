@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [[ -z $1 ]]; then
+    echo "Usage: $0 <SCRIPT_NAME>"
+    exit 1
+fi
+
+SCRIPT_PATH="/Users/byrnej86/GitProjects/scripts/$1"
+
+echo -e "#!/usr/bin/env bash\n\nset -e\n" > $SCRIPT_PATH
+
+chmod +x $SCRIPT_PATH
+
+code $SCRIPT_PATH
